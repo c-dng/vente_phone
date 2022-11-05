@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+
+
+<div class="container">
+
+<h1 class="text-center mt-3"> My orders </h1>
+<table class="table" id="mediaQueries">
+	<thead>
+		<tr>
+			<th scope="col">Order date</th>
+			<th scope="col">Item(s) / Image </th>
+			<th scope="col">Order status</th>
+		</tr>
+	</thead>
+			<tbody>
+				{% for item in app.user.commandes %}
+                    {% for item1 in item.detailCommandes %}
+				<tr>
+					<th scope="row">{{ item.dateCom|date('m/d') }}</th>
+					<td>{{ item1.name }} </td>
+					<td></td>
+				</tr>
+                    {% endfor %}</p>
+				{% endfor %}
+			</tbody>
+</table>
+
+</div>
+
+{% endblock %}

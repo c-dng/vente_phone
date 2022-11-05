@@ -1,0 +1,110 @@
+html, body {
+  min-height:100vh;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  background-image:linear-gradient( #eaf4f4,#cce3de,#a4c3b2)
+}
+
+a {
+    text-decoration: none;
+}
+
+/* ========================================== NAVBAR ========================================== */
+
+/* ========================================== HOMEPAGE ========================================== */
+
+/* card container*/
+div.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+div.card__quantity {
+  display: flex;
+}
+
+/* ========================================== CARD SHOW DETAILS ========================================== */
+
+/* container card show détail */
+.card__body {
+  display: flex;
+  justify-content: center;
+}
+
+.half {
+  width: 50%;
+}
+
+i.fas.fa-heart {
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.card__title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__body .image{
+  padding-top: 15px;
+  width: 100%;
+}
+
+/* Partie : Stock */
+span.stock {
+  color: #a1cc16;
+}
+
+/* Partie : Review */
+.reviews {
+  display: flex;
+  padding-top: 0.5em;
+}
+
+.stars {
+  display: flex;
+}
+
+/* enlever les puces au ul */
+ul.stars {
+  list-style: none;
+  padding-left: 0;
+}
+
+div.card__footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Partie : Panier */
+
+div.panier__article_in_card{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+img.panier__articleImage {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+div.btn-group {
+  align-items: center;
+}
+
+#login_signIn {
+  font-weight: bold;
+}
+
+/* Media queries */
+@media (max-width: 1199.98px) { 
+  body {
+    background-color: red;
+  }
+  
+}

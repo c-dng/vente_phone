@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pictur index{% endblock %}
+
+{% block body %}
+    <h1>Pictur index</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pictur in picturs %}
+            <tr>
+                <td>{{ pictur.id }}</td>
+                <td>{{ pictur.image }}</td>
+                <td>
+                    <a href="{{ path('app_pictur_show', {'id': pictur.id}) }}">show</a>
+                    <a href="{{ path('app_pictur_edit', {'id': pictur.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pictur_new') }}">Create new</a>
+{% endblock %}

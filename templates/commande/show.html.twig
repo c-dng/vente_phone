@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <a class="btn btn-light mt-2 ms-2" href="{{ path('app_commande_index') }}"> <i class="fas fa-undo-alt"></i> Back to list </a>
+
+    <h1 class="text-center">Order</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ commande.nom }}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ commande.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Date_com</th>
+                <td>{{ commande.dateCom ? commande.dateCom|date('Y-m-d H:i:s') : '' }}</td>
+              
+                          </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ commande.total }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ commande.status ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-secondary" href="{{ path('app_modif_status_commande', {'id': commande.id}) }}">Livraison</a> 
+
+    {# {{ include('commande/_delete_form.html.twig') }} #}
+    <hr>
+    <div class="container mb-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Ref</th>
+                <th>Prix_unit</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for detail_commande in commande.getDetailCommandes() %}
+            <tr>
+                <td>{{ detail_commande.id }}</td>
+                <td>{{ detail_commande.name }}</td>
+                <td>{{ detail_commande.ref }}</td>
+                <td>{{ detail_commande.prixUnit }}</td>
+                <td>{{ detail_commande.quantity }}</td>
+                <td>{{ detail_commande.total }}</td>
+                <td>
+                    {# <a href="{{ path('app_detail_commande_show', {'id': detail_commande.id}) }}">show</a>
+                    <a href="{{ path('app_detail_commande_edit', {'id': detail_commande.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+      <hr>
+
+</div>
+
+{% endblock %}

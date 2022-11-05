@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Pictur{% endblock %}
+
+{% block body %}
+
+    <a class="btn btn-light mt-2 ms-2" href="{{ path('app_pictur_index') }}"> <i class="fas fa-undo-alt"></i> Back to list </a>
+
+    <h1>Edit Pictur</h1>
+
+    {{ include('pictur/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('pictur/_delete_form.html.twig') }}
+{% endblock %}

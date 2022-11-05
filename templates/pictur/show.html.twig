@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Pictur{% endblock %}
+
+{% block body %}
+
+<a class="btn btn-light mt-2 ms-2" href="{{ path('app_pictur_index') }}"> <i class="fas fa-undo-alt"></i> Back to list </a>
+
+    <h1>Pictur</h1>
+
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pictur.id }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ pictur.image }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pictur_edit', {'id': pictur.id}) }}">edit</a>
+
+    {{ include('pictur/_delete_form.html.twig') }}
+{% endblock %}

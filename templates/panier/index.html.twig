@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!
+{% endblock %}
+
+{% block body %}
+
+	{# {{ dump(panier) }} vérifier si ça a bien récupéré le panier #}
+	<div class="container pt-5">
+		<div class="row">
+			<div class="col-12">
+
+				<div class="p-3 border bg-light">
+					<div class="panier__nb_product">
+						<i class="fas fa-shopping-cart"></i>
+						Your basket (1 article)
+					</div>
+					<br>
+
+					{% if panier is empty %}
+						<p>
+							No articles yet.
+							<a class="" href="{{ path('app_home') }}">
+								See the catalog of phones for sale.
+							</a>
+						</p>
+
+					{% else %}
+
+						{% for row in panier %}
+
+							<div class="panier__article_in_card">
+								<img class="panier__articleImage" src="{{ asset('images/' ~ row['product'].image )}}" alt="article Image">
+								<div class="panier__article_name">{{ row['product'].marque }}
+									{{ row['product'].name }}</div>
+
+								{# modifier la quantité avec - et + #}
+								<a class="btn p-1" href="{{ path('app_delete_quantity_produit', { 'id' : row['product'].id }) }}">
+									<i class="fas fa-minus"></i>
+								</a>
+
+								{{ row['quantity'] }}
+
+								<a class="btn p-1 text-primary" href="{{ path('app_add_produit_panier' , {'id' : row['product'].id }) }}">
+									<i class="fas fa-plus"></i>
+								</a>
+
+								<div class="panier__article_quantity">{{ row['total'] }}
+									€</div>
+								<div class="panier__articlebtnGroup">
+
+									<a class="btn btn-danger" href="{{ path('app_delete_produit_panier', {'id' : row['product'].id }) }}">
+										<i class="fas fa-trash"></i>
+									</a>
+									{# <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a> #}
+									<a href="#" class="btn btn-primary icon_heart">
+										<i class="fas fa-heart"></i>
+									</a>
+
+								</div>
+							</div>
+
+						{% endfor %}
+
+					{% if panier is empty %}
+						<p>
+							No articles yet.
+							<a class="" href="{{ path('app_home') }}">
+								See the catalog of phones for sale.
+							</a>
+						</p>
+
+					{% else %}
+
+						<div class="p-3 border bg-light mt-3">
+							<div class="delivery text-center">
+								<div class="deliveryEstimation"><i class="fas fa-truck"></i> Estimated delivery </div>
+                                <div class="deliveryEstimation">Ve, 01.11. - Ma, 25.11.</div>
+							</div>
+							
+					{% endif %}
+
+					{% endif %}
+
+                        </div>
+
+                        <div class="d-flex justify-content-end p-3 border bg-light mt-3">
+								<div class="panier__total"> TOTAL : {{ totalTTC }} € </div>
+                        </div>
+
+						<div class="p-3 border bg-light text-center">
+							<div class"methodpaiement">
+								<div class="deliveryEstimation">Methods paiement</div>
+								<div class="deliveryEstimation">
+									<i class="fab fa-cc-mastercard"></i>
+									<i class="fab fa-cc-visa"></i>
+									<i class="fas fa-credit-card"></i>
+									<i class="fab fa-cc-amex"></i>
+									<i class="fab fa-paypal"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="text-center" id="panier__buttonsBasket">
+							<a class="btn btn-danger mt-3" href="{{ path('app_effacer_panier') }}"> Clear basket </a>
+							{% if app.user %}
+							<a class="btn btn-success mt-3" href="{{ path('app_achat') }}">Validate</a>
+							{% else %}
+							<a class="btn btn-success" href="{{ path('app_login') }}">Validate</a>
+							{% endif %}
+						</div>
+					
+					</div>
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}

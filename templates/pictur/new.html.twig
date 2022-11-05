@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pictur{% endblock %}
+
+{% block body %}
+
+<a class="btn btn-light mt-2 ms-2" href="{{ path('app_pictur_index') }}"> <i class="fas fa-undo-alt"></i> Back to list </a>
+
+<div class="container">
+
+    <h1>Create new Pictur</h1>
+
+    {{ include('pictur/_form.html.twig') }}
+
+</div>
+
+{% endblock %}

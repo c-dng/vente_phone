@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="{{ path('app_home') }}">VENTE PHONE</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+				<li class="nav-item dropdown">
+					{# si l'user co a le rôle admin ça s'affiche #}
+					{% if is_granted('ROLE_ADMIN') %}
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fas fa-user-shield"></i>
+							ADMIN PANEL
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li>
+								<a class="dropdown-item" href="{{ path('app_product_index') }}">
+									<i class="fas fa-mobile-alt"></i>
+									PRODUCTS
+								</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_category_index') }}">
+									<i class="fas fa-th-large"></i>
+									CATEGORIES
+								</a>
+							</li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<a class="dropdown-item" href="{{ path('app_commande_index') }}">
+									<i class="fas fa-tasks"></i>
+									ORDERS
+								</a>
+							</li>
+						</ul>
+					{% endif %}
+				</li>
+
+						<li class="nav-item">
+						{# si un simple user est co #}
+						{# on entre dans le bloc if si personne dans le bloc else #}
+						{% if app.user %}
+							<a class="nav-link active" aria-current="page" href="{{ path('app_logout') }}"> <i class="fas fa-sign-out-alt"></i>
+							LOGOUT</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_profil') }}">
+							<i class="fas fa-tasks"></i>
+							MY ORDERS</a>
+						</li>
+			{% else %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_login') }}">
+						LOGIN
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_register')}}">
+						REGISTER
+					</a>
+				</li>
+
+			{% endif %}
+
+		  </ul>
+		
+		<form class="d-flex">
+			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success" type="submit">Search</button>
+			<a class="nav-link" href="{{ path('app_panier') }}">
+				<i class="fas fa-shopping-cart fa-lg"></i>
+			</a>
+		</form>
+
+		{# searchBar #}
+    	{# <form class="d-flex">
+			<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success" type="submit">Search</button>
+    	</form> #}
+
+    </div>
+  </div>
+</nav>

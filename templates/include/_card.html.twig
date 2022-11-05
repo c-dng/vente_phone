@@ -1,0 +1,23 @@
+ <div class="card pt-1 ps-2 pe-2 pb-2">
+          <i class="fas fa-heart"></i>
+            <img src="{{ asset('images/' ~ product.image) }}" alt="" style="width:150px;">
+            <div class="card__description text-center">
+                <div class="card__descriptionText"> {{ product.marque }} {{ product.name}} </div>
+            </div>
+            <div class="card__price text-center"> {{ product.prixUnit }} € </div>
+            
+            <div class="card__quantity justify-content-center">
+                {# quantity available #}
+                <div class="card__available">Available: <span>{{ product.quantity }}</span></div>
+            </div>
+
+            {# add to basket #}
+			<div class="col-xs-6 pt-1 pb-1">
+                <a class="btn btn-primary" href="{{ path('app_add_produit_panier' , {'id' : product.id }) }}"><i class="fas fa-shopping-cart"></i></a>
+				<a class="btn btn-success shop-button" href="{{ path('app_add_produit_panier', { 'id' : product.id }) }}">Buy Now</a>
+			</div>
+
+            {# détail produit #}
+            <a href="{{ path('app_user_product_show', {'id' : product.id} ) }}"
+                class="btn btn-secondary text-center" role="button">Card product</a>
+        </div>

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Homepage
+{% endblock %}
+
+{% block body %}
+
+	<div class="position-relative overflow-hidden p-3 p-md-5 text-center bg-light">
+		<div class="col-md-5 p-lg-5 mx-auto my-5">
+			<h1 class="display-4 font-weight-normal">We love technology.</h1>
+			<p class="lead font-weight-normal">Find the phone you need</p>
+			<a class="btn btn-outline-secondary" href="#">Coming soon</a>
+		</div>
+		<div class="product-device shadow-sm d-none d-md-block"></div>
+		<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+	</div>
+
+	<br>
+    
+    <div class="d-flex justify-content-center align-items-center">
+        {# BUTTON FILTER #}
+        {% for row in categorys %}
+            <a href="{{ path('app_filtre_produit', { 'param' : row.id }) }}" class="btn btn-secondary ms-1 me-1 mb-4">
+                {{ row.name }}
+            </a>
+        {% endfor %}
+        
+    </div>
+
+	{# BUTTON FILTER SELECT #}
+	{# <select name="pets" id="pet-select">
+		    {% for row in categorys %}
+		        <option value="">
+		
+		        </option>
+		</select>
+		    {% endfor %} #}
+
+	{# <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+		<div class="btn-group" role="group">
+			<button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+					Select Cat
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            {% for row in categorys %}
+				<li>
+			        <a href="{{ path('app_filtre_produit', { 'param' : row.id }) }}" class="btn btn-secondary">
+				ezd
+                </li>
+            {% endfor %}
+			</ul>
+		</div>
+	</div> #}
+
+	<div class="card-container bg-light pt-4 pb-4">
+
+	{# _______________ Début Exemple pour des cards en flex _______________ #}
+	{# container et row py-5 #}
+	{# _______________ Fin exemple puis final ligne  pour des cards en flex _______________ #}
+
+	{# --------------------------------------- CARDS --------------------------------------- #}
+		    
+            {% for product in products %}
+			{# début boucle #}
+			{% include('include/_card.html.twig') %}
+            {% endfor %}
+			{# fin boucle #}
+
+	{# --------------------------------------- FIN CARDS --------------------------------------- #}
+
+	{# _______________ Exemple pour la fin des flex _______________ #}
+	{# </div> et </div> #}
+	{# _________________________ #}
+
+	</div>
+
+{% endblock %}

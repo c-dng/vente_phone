@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Commande{% endblock %}
+
+{% block body %}
+
+<a class="btn btn-light mt-2 ms-2" href="{{ path('app_commande_index') }}"> <i class="fas fa-undo-alt"></i> Back to list </a>
+
+    <h1>Edit Commande</h1>
+
+    {{ include('commande/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {{ include('commande/_delete_form.html.twig') }}
+{% endblock %}
